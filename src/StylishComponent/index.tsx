@@ -4,7 +4,7 @@ import "./StylishComponent.scss";
 
 const StylishComponent: React.FC = () => {
   return (
-    <div className="container">
+    <div className="container" data-testid="container">
       <p>Stylish React Package</p>
     </div>
   );
