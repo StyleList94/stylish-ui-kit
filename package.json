@@ -1,6 +1,6 @@
 {
   "name": "stylish-react-package",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "skeleton to react component package",
   "main": "build/index.js",
   "module": "build/index.esm.js",
