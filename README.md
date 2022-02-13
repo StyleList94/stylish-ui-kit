@@ -2,30 +2,39 @@
 
 skeleton to react component library
 
-Features
+## Features
 
 - Storybook
 - Testing(Jest, React Testing Library)
 
-
-
 ## Get Started
 
-#### Build
-
-```bash
-yarn build
-```
-
-#### Testing
-
-```bash
-yarn test
-```
-
-#### Storybook
+### Run Storybook
 
 ```bash
 yarn storybook
 ```
 
+### Build
+
+#### Package
+
+```bash
+yarn build
+```
+
+#### Storybook
+
+```bash
+yarn build-storybook
+```
+
+### Testing
+
+```bash
+# Dev(watching)
+yarn test
+
+# CI
+yarn test:ci
+```
