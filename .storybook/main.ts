@@ -17,5 +17,17 @@ const config: StorybookConfig = {
       tsconfigPath: './tsconfig.json',
     },
   },
+
+  async viteFinal(config) {
+    const { mergeConfig, defineConfig } = await import('vite');
+    const { default: tailwindcss } = await import('@tailwindcss/vite');
+
+    return mergeConfig(
+      config,
+      defineConfig({
+        plugins: [tailwindcss()],
+      })
+    );
+  },
 };
 export default config;
