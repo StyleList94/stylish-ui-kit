@@ -1,54 +1,86 @@
 {
-  "name": "stylish-react-package",
-  "version": "1.1.0",
-  "description": "skeleton to react component package",
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
+  "name": "stylish-ui-kit",
+  "version": "2.0.0",
+  "description": "Stylish UI kit for React applications",
+  "type": "module",
   "files": [
     "dist"
   ],
-  "license": "MIT",
-  "scripts": {
-    "build": "rollup -c",
-    "test": "jest --watch",
-    "test:ci": "jest --ci",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+  "main": "./dist/main.umd.js",
+  "module": "./dist/main.es.js",
+  "exports": {
+    ".": {
+      "types": "./dist/main.d.ts",
+      "import": "./dist/main.es.js",
+      "require": "./dist/main.umd.js"
+    },
+    "./style.css": "./dist/style.css"
   },
+  "types": "./dist/main.d.ts",
+  "scripts": {
+    "build": "tsc --p ./tsconfig.build.json && vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "author": "StyleList94",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/StyleList94/stylish-react-package.git"
+    "url": "git+https://github.com/StyleList94/stylish-ui-kit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/StyleList94/stylish-ui-kit/issues"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx)": "pnpm run lint"
+  },
+  "dependencies": {
+    "react": "^18",
+    "react-dom": "^18"
   },
   "peerDependencies": {
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
+    "react": ">=18",
+    "react-dom": ">=18",
+    "tailwindcss": ">=4"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.10",
-    "@rollup/plugin-commonjs": "^17.0.0",
-    "@rollup/plugin-node-resolve": "^11.0.1",
-    "@storybook/addon-actions": "^6.4.19",
-    "@storybook/addon-essentials": "^6.4.19",
-    "@storybook/addon-links": "^6.4.19",
-    "@storybook/react": "^6.4.19",
-    "@testing-library/jest-dom": "^5.11.8",
-    "@testing-library/react": "^11.2.3",
-    "@testing-library/user-event": "^12.6.0",
-    "@types/react": "^17.0.0",
-    "babel-loader": "^8.2.2",
-    "babel-preset-react-app": "^10.0.0",
-    "identity-obj-proxy": "^3.0.0",
-    "jest": "^26.6.3",
-    "node-sass": "6.0.1",
-    "postcss": "^8.2.3",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "rollup": "^2.36.1",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-postcss": "^4.0.0",
-    "rollup-plugin-typescript2": "^0.29.0",
-    "sass-loader": "^10.1.0",
-    "ts-jest": "^26.4.4",
-    "typescript": "^4.1.3"
+    "@eslint/js": "^9.27.0",
+    "@storybook/addon-essentials": "^8.6.14",
+    "@storybook/addon-interactions": "^8.6.14",
+    "@storybook/addon-onboarding": "^8.6.14",
+    "@storybook/blocks": "^8.6.14",
+    "@storybook/core-events": "^8.6.14",
+    "@storybook/manager-api": "^8.6.14",
+    "@storybook/react": "^8.6.14",
+    "@storybook/react-vite": "^8.6.14",
+    "@storybook/test": "^8.6.14",
+    "@storybook/theming": "^8.6.14",
+    "@tailwindcss/vite": "^4.1.7",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^20.17.48",
+    "@types/react": "^18",
+    "@vitejs/plugin-react": "^4.4.1",
+    "eslint": "^9.27.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "globals": "^16.1.0",
+    "jsdom": "^26.1.0",
+    "lint-staged": "^16.0.0",
+    "prettier": "^3.5.3",
+    "storybook": "^8.6.14",
+    "tailwindcss": "^4.1.7",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.32.1",
+    "vite": "^6.3.5",
+    "vite-plugin-dts": "^4.5.4",
+    "vitest": "^3.1.4"
   }
 }
