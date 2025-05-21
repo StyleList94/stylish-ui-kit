@@ -9,7 +9,7 @@ describe('Button', () => {
     render(<Button>Click Me</Button>);
 
     expect(
-      screen.getByRole('button', { name: 'Click Me' })
+      screen.getByRole('button', { name: 'Click Me' }),
     ).toBeInTheDocument();
   });
 });

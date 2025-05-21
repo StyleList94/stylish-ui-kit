@@ -26,7 +26,7 @@ const config: StorybookConfig = {
       config,
       defineConfig({
         plugins: [tailwindcss()],
-      })
+      }),
     );
   },
 };

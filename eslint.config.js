@@ -4,6 +4,7 @@ import tseslint from 'typescript-eslint';
 import pluginReact from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import { defineConfig, globalIgnores } from 'eslint/config';
+import eslintConfigPrettier from 'eslint-config-prettier/flat';
 
 export default defineConfig([
   globalIgnores(['dist']),
@@ -20,6 +21,11 @@ export default defineConfig([
   {
     files: ['**/*.{js,jsx,mjs,cjs,ts,tsx}'],
     ...pluginReact.configs.flat.recommended,
+    settings: {
+      react: {
+        version: 'detect',
+      },
+    },
     rules: {
       ...pluginReact.configs.recommended.rules,
       ...pluginReact.configs['jsx-runtime'].rules,
@@ -43,4 +49,5 @@ export default defineConfig([
     },
   },
   reactHooks.configs['recommended-latest'],
+  eslintConfigPrettier,
 ]);
