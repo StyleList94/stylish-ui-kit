@@ -20,6 +20,7 @@
   "scripts": {
     "build": "tsc --p ./tsconfig.build.json && vite build",
     "preview": "vite preview",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "test": "vitest run",
     "test:watch": "vitest",
     "storybook": "storybook dev -p 6006",
@@ -34,6 +35,9 @@
   "bugs": {
     "url": "https://github.com/StyleList94/stylish-ui-kit/issues"
   },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx)": "pnpm run lint"
+  },
   "dependencies": {
     "react": "^18",
     "react-dom": "^18"
@@ -44,6 +48,7 @@
     "tailwindcss": ">=4"
   },
   "devDependencies": {
+    "@eslint/js": "^9.27.0",
     "@storybook/addon-essentials": "^8.6.14",
     "@storybook/addon-interactions": "^8.6.14",
     "@storybook/addon-onboarding": "^8.6.14",
@@ -62,10 +67,16 @@
     "@types/node": "^20.17.48",
     "@types/react": "^18",
     "@vitejs/plugin-react": "^4.4.1",
+    "eslint": "^9.27.0",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "globals": "^16.1.0",
     "jsdom": "^26.1.0",
+    "lint-staged": "^16.0.0",
     "storybook": "^8.6.14",
     "tailwindcss": "^4.1.7",
     "typescript": "^5.8.3",
+    "typescript-eslint": "^8.32.1",
     "vite": "^6.3.5",
     "vite-plugin-dts": "^4.5.4",
     "vitest": "^3.1.4"
