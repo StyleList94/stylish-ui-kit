@@ -27,7 +27,7 @@ export default defineConfig({
       entry: {
         main: resolve(__dirname, 'lib/main.ts'),
       },
-      name: 'StylishReactUIKit',
+      name: 'StylisUiKit',
       formats: ['es', 'umd'],
       fileName: (format, entryName) => `${entryName}.${format}.js`,
       cssFileName: 'style',
