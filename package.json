@@ -1,13 +1,22 @@
 {
-  "name": "stylish-react-package",
+  "name": "stylish-ui-kit",
   "version": "1.1.0",
-  "description": "skeleton to react component package",
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
+  "description": "Stylish UI kit for React applications",
+  "type": "module",
   "files": [
     "dist"
   ],
-  "license": "MIT",
+  "main": "./dist/main.umd.js",
+  "module": "./dist/main.es.js",
+  "exports": {
+    ".": {
+      "types": "./dist/main.d.ts",
+      "import": "./dist/main.es.js",
+      "require": "./dist/main.umd.js"
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "types": "./dist/main.d.ts",
   "scripts": {
     "build": "tsc --p ./tsconfig.build.json && vite build",
     "preview": "vite preview",
@@ -16,9 +25,14 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
+  "author": "StyleList94",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/StyleList94/stylish-react-package.git"
+    "url": "git+https://github.com/StyleList94/stylish-ui-kit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/StyleList94/stylish-ui-kit/issues"
   },
   "dependencies": {
     "react": "^18",

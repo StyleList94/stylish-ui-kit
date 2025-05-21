@@ -1,6 +1,6 @@
-# Stylish React Package
+# Stylish UI Kit
 
-skeleton to react component library
+Stylish UI kit for React applications
 
 ## Features
 
