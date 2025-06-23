@@ -1,58 +1,55 @@
-import js from '@eslint/js';
-import globals from 'globals';
 import tseslint from 'typescript-eslint';
-import pluginReact from 'eslint-plugin-react';
-import reactHooks from 'eslint-plugin-react-hooks';
-import { defineConfig, globalIgnores } from 'eslint/config';
-import eslintConfigPrettier from 'eslint-config-prettier/flat';
+import stylish from 'eslint-config-stylish';
+import stylishReact from 'eslint-config-stylish/react';
+import stylishTypeScript from 'eslint-config-stylish/typescript';
+import vitest from '@vitest/eslint-plugin';
+import testingLibrary from 'eslint-plugin-testing-library';
 import storybook from 'eslint-plugin-storybook';
+import eslintConfigPrettier from 'eslint-config-prettier/flat';
 
-export default defineConfig([
-  globalIgnores(['dist']),
+export default tseslint.config(
   {
-    ignores: ['!.storybook'],
+    ignores: ['dist', '!.storybook', '*.config.[jt]s', '*.config.m[jt]s'],
   },
   {
     files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-    plugins: { js },
-    extends: ['js/recommended'],
+    extends: [stylish],
+    rules: {
+      'import/prefer-default-export': 'off',
+    },
   },
   {
-    files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-    languageOptions: { globals: { ...globals.browser, ...globals.node } },
+    files: ['**/*.{js,jsx,tsx}'],
+    extends: [stylishReact],
   },
-  tseslint.configs.recommended,
   {
-    files: ['**/*.{js,jsx,mjs,cjs,ts,tsx}'],
-    ...pluginReact.configs.flat.recommended,
-    settings: {
-      react: {
-        version: 'detect',
+    files: ['**/*.{ts,mts,cts,tsx}'],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.json', './tsconfig.storybook.json'],
+        ecmaFeatures: {
+          jsx: true,
+        },
+        ecmaVersion: 12,
+        sourceType: 'module',
       },
     },
+    extends: [stylishTypeScript],
+  },
+  {
+    files: ['.storybook/**/*.ts'],
     rules: {
-      ...pluginReact.configs.recommended.rules,
-      ...pluginReact.configs['jsx-runtime'].rules,
-      'react/display-name': 'off',
-      'react/function-component-definition': [
-        2,
-        {
-          namedComponents: ['arrow-function', 'function-declaration'],
-          unnamedComponents: 'arrow-function',
-        },
-      ],
-      'react/jsx-filename-extension': [
-        1,
-        {
-          extensions: ['.tsx'],
-        },
-      ],
-      'react/jsx-props-no-spreading': 'off',
-      'react/prop-types': 'off',
-      'react/require-default-props': 'off',
+      'import/no-extraneous-dependencies': 'off',
     },
   },
-  reactHooks.configs['recommended-latest'],
-  ...storybook.configs['flat/recommended'],
+  {
+    files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
+    ...testingLibrary.configs['flat/react'],
+  },
+  {
+    files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
+    ...vitest.configs.recommended,
+  },
+  storybook.configs['flat/recommended'],
   eslintConfigPrettier,
-]);
+);
