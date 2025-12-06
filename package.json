@@ -38,10 +38,6 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx)": "pnpm run lint"
   },
-  "dependencies": {
-    "react": "^18",
-    "react-dom": "^18"
-  },
   "peerDependencies": {
     "react": ">=18",
     "react-dom": ">=18",
@@ -74,6 +70,8 @@
     "jsdom": "^27.1.0",
     "lint-staged": "^16.2.6",
     "prettier": "^3.6.2",
+    "react": "^18",
+    "react-dom": "^18",
     "storybook": "^10.0.2",
     "tailwindcss": "^4.1.1",
     "typescript": "^5.9.3",
